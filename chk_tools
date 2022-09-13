@@ -53,13 +53,6 @@ echo "[✔]"
 else
 echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install apache2"
 fi
-echo -ne "$green""* - Checking$cyan Gnome Terminal$green (Terminal)........"
-which gnome-terminal > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo "[✔]"
-else
-echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install gnome-terminal"
-fi
 echo -ne "$green""* - Checking$cyan Upx$green (File Compressor)............"
 which upx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
