@@ -541,29 +541,6 @@ echo "0" > "$stp"
 echo "apache2 -> Not OK" >> "$inst"
 fi
 fi
-sleep 1
-#check if gnome terminal exists
-#added this new install option because user may be running a distro that may not have gnome terminal installed by default
-#gnome terminal is used in main script to run searchsploit
-which gnome-terminal > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Gnome Terminal....................[ found ]"
-which gnome-terminal >> "$log" 2>&1
-echo "Gnome Terminal -> OK" >> "$inst"
-else
-echo -e "$red" "[ X ] Gnome-terminal-> not found "
-echo -e "$yellow" "[ ! ] Installing gnome-terminal "
-xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
-which gnome-terminal >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Gnome Terminal -> OK"
-echo "Gnome Terminal -> OK" >> "$inst"
-else
-echo -e "$red" "[ x ] Gnome Terminal"
-echo "0" > "$stp"
-echo "gnome-terminal -> Not OK" >> "$inst"
-fi
-fi
 
 #Checking if upx compressor exists
 sleep 1
