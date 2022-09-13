@@ -1387,20 +1387,6 @@ else
 fi
 sleep 0.5
 
-# check gnome-terminal if exists
-which gnome-terminal > /dev/null 2>&1
-if [ -d $find ]; then
-	   echo -e $okegreen [✔]::[Gnome-terminal]: Installation found!;
-else
-	   echo -e $red [x]::[warning]:this script require gnome-terminal to work ;
-	   echo ""
-	   echo -e $red [!]::Run setup.sh to install gnome-terminal ;
-	   echo ""
-	   sleep 0.5
-   exit 1
-fi
-sleep 0.5
-
 # Check upx if exists
 which upx > /dev/null 2>&1
 if [ -d $find ]; then
@@ -1580,10 +1566,10 @@ sleep 0.5
 fi
 sleep 0.5
 
-#Checking internet connection by connecting to google over http
+#Checking internet connection by connecting to archlinux over http
 #case fails then run chknet function (ping)
 
-echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+echo -e "GET GET https://ping.archlinux.org/nm-check.txt" | nc ping.archlinux.org 80 > /dev/null 2>&1
 
 if [ $? -ne 0 ]; then
 	echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
@@ -3637,7 +3623,7 @@ case $choice in
 #On this option grab script must be used to get the generated exploit by msfconsole
 #With option on msfconsole exit -y , msfconsole is not able to generate the doc file properly
 
-          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+          . "$path/grab.sh"
          	xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
           rm -rf $path/temp/msff >/dev/null 2>&1
@@ -4020,7 +4006,7 @@ fi
 
 #On this option grab script must be used to get the generated exploit by msfconsole
 #With option on msfconsole exit -y , msfconsole is not able to generate the odt file properly
-          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+          . "$path/grab.sh"
           xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
           rm -rf $msff >/dev/null 2>&1
@@ -4112,7 +4098,7 @@ fi
 
 #On this option grab script must be used to get the generated exploit by msfconsole
 #With option on msfconsole exit -y , msfconsole is not able to generate the odt file properly
-          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+          ."$path/grab.sh"
          	xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
           rm -rf $path/temp/msff >/dev/null 2>&1
@@ -5953,7 +5939,7 @@ menu () {
         echo -ne $okegreen " What do you want to Hack Today ? :" ;tput sgr0
         read searchterm
         echo
-        gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+        echo -e '\e[32m[-] Close this window when done!\e[0m'
         menu
 
       elif test $fatrat == '12'
@@ -6197,7 +6183,7 @@ elif test $fatrat == '11'
       echo -ne $okegreen " What do you want to Hack Today ? :   " ;tput sgr0
       read searchterm
       echo
-      gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+      echo -e '\e[32m[-] Close this window when done!\e[0m'
       menu
 
     elif test $fatrat == '12'
