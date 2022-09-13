@@ -83,7 +83,6 @@ https://github.com/Screetsec/TheFatRat/issues/391
 - dnsutils (To get your external ip address and dns)
 - gcc (file compiler)
 - apache2 (web server , used to create some exploits )
-- gnome-terminal (terminal emulator used in some fatrat special features)
 - upx-ucl (file compressor)
 - ruby (To run ruby modules used in fatrat)
 - openssl (To create certificates for the apks)
